@@ -15,7 +15,9 @@ To run this project follow the steps as mentioned below:
 1) In the console execute "*mongod*" to turn on the mongodb server.
 
 2) Execute "*use login*" and
-"*db.login.insert({"username":of your choice,"password":of your choice})*" For e.g,db.login.insert({"username":"admin@gmail.com","password":"Admin@1234"})
+"*db.login.insert({"username":of your choice,"password":of your choice})*". 
+For e.g,db.login.insert({"username":"admin@gmail.com","password":"Admin@1234"})
+
 Use the above inserted username and password to login to the dashboard.(As there is only login functionality, user needs to input username and password directly to database).
 
 Use the above inserted username and password to log into the application.
