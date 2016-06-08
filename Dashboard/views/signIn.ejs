@@ -1,76 +1,45 @@
 <html>
-<head>
-<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}
-</style>
-<title>Litmus Automation | Login</title>
-<link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="stylesheets/style.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script>
+  <head>
+    <title>Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
 
-
-	
-	var app = angular.module("dashboard_signIn_app", []); 
-	app.controller("dashboard_signIn_controller", function($scope,$http,$window) {
-		
-		
-		$scope.login = function(){
-			var url = "/login";
-			$http({
-				method:'post',
-				url: url,
-				data:{ username: $scope.inputEmail , password: $scope.inputPassword },
-				dataType: 'html'
-			}).then(function(res){
-				if(res.data.status == "200"){
-						$window.location.href = '/dashboard';
-				}else{
-					$scope.serverError = res.data.msg;
-				}
-			});
-		}
-	});
-
-
-
-</script>
-</head>
-<body ng-app="dashboard_signIn_app" ng-controller="dashboard_signIn_controller" class="ng-scope">
-<section class="panel">
-                              <div class="panel-body">
-	<form name="signInForm" style="top: 10%; position: absolute; left: 42%;" align="center" class="form-horizontal ng-pristine ng-invalid ng-invalid-required">
-		 <div class="text-box">
-			    <div class="signup-wrapper">
-			        <h1>Login to your account</h1>
-					    <input type="text" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Username or email" required="" autocomplete="" maxlength="50" id="email" name="email" ng-model="inputEmail" autofocus="" aria-required="true" ng-pattern="/[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}/"><br><br>
-						<span>
-								<span style="color:#e51837;" ng-show="signInForm.email.$error.pattern" class="ng-hide">Please enter valid email</span>
-	    						<span style="color:#e51837;" ng-show="signInForm.email.$error.required &amp;&amp; signInForm.email.$dirty" class="ng-hide">Email is required</span>
-	    				</span>	   
-			        	<input type="password" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern" placeholder="Password" required="" ng-model="inputPassword" id="password" name="password" autocomplete="on" autofocus="" aria-required="true" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*([-+_!@#$%^&amp;*.,?])).{5,7}/"><br><br>
-					    
-					    <span>
-							<span style="color:#e51837;" ng-show="signInForm.password.$error.pattern" class="ng-hide">Must contain capital, numbers and alphabets</span>
-    						<span style="color:#e51837;" ng-show="signInForm.password.$error.required &amp;&amp; signInForm.password.$dirty" class="ng-hide">Password is required</span>
-    					</span>	
-					    &nbsp;&nbsp;&nbsp;&nbsp;
-					    <br><br>
-					    <input type="submit" style="color:white; width: auto;" class="btn btn-info form-control" value="Log in" ng-click="login()">
-				        <div class="alert alert-danger ng-hide" ng-show="unexpected_login">
-				        	<strong style="color:red">Invalid username or password</strong>
-				        </div>			        
-				  </div>
-			</div>
-	    </form>
-	    </div>
-	    </section>
-
-</body>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  </head>
+ <body>
+  <form action="/login" method="post" class="afterSignIn">
+     <section class="panel">
+        <div class="panel-body">
+           <form class="form-horizontal">
+		        <div class="text-box">
+		               <div class="signup-wrapper">
+		               
+		                	  <h1 align="center">Login to your account</h1>
+		               
+		                      <input type="email" class="form-control" name="username" id="username" placeholder="Email Id">
+		                      <span>&nbsp;&nbsp;&nbsp;<br></span>
+		                      
+		                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+	                 		  <span>&nbsp;&nbsp;&nbsp;<br></span>
+			            </div>
+			                  
+		                  <div class="form-group ">
+		                    <div class="signIn" align="center">
+		                      <button type="submit" class="btn btn-primary">Sign in</button>
+		                    </div>
+		                  </div>
+		        </div>
+           </form>
+        </div>
+     </section>
+  </form>	
+ </body>
+ 
 </html>
